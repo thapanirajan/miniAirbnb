@@ -1,0 +1,29 @@
+form {
+  font-size: 2rem;
+  margin: auto;
+  border: 1px solid white;
+  text-align: left;
+  width: fit-content;
+  padding: 5rem;
+  border-radius: 10px;
+  box-shadow: 0.3rem 0.3rem 0.7rem rgba(185, 67, 67, 0.5);
+}
+input {
+  padding: 0.7rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+button {
+  padding: 0.7rem 2rem;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(0, 54, 171, 0.856);
+  color: white;
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: scale ease-in-out 0.3s;
+}
+button:hover {
+  scale: 1.1;
+}

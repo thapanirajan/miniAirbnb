@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
+      integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid rgb(255, 255, 255);
+        border-collapse: collapse;
+        padding: 1.5rem;
+      }
+      th {
+        font-size: 2rem;
+      }
+      td {
+        font-size: 1.2rem;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        position: relative;
+        font-size: 2rem;
+      }
+      a::after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 0%;
+        background-color: white;
+        position: absolute;
+        transition: width ease-in-out 0.4s;
+        background-color: rgb(255, 145, 0);
+      }
+      a:hover::after {
+        width: 100%;
+      }
+      .table {
+        width: fit-content;
+        margin: auto;
+        margin-top: 3rem;
+      }
+      .table p {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+      }
+      .edit {
+        color: hsl(212, 97%, 48%);
+        font-size: 1.2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .edit:hover {
+        color: hsl(212, 97%, 58%);
+      }
+      .edit:hover::after,
+      .delete:hover::after {
+        width: 0%;
+      }
+      .delete {
+        color: hsl(0, 100%, 40%);
+        font-size: 1.2rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .delete:hover {
+        color: hsl(0, 100%, 60%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>HOME PAGE</h1>
+      <a href="/newForm">Add new student <i class="ri-file-add-line"></i></a>
+      <div class="table">
+        <p>Student Data</p>
+        <table>
+          <thead>
+            <tr>
+              <th>S.N</th>
+              <th>Name</th>
+              <th>Class</th>
+              <th>Faculty</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if(student.length<=0) { %>
+            <tr>
+              <td colspan="5" style="text-align: center">No data Found</td>
+            </tr>
+            <% } else {%> <% for (s of student) { %>
+
+            <tr>
+              <td><%= s._id%></td>
+              <td><%= s.name%></td>
+              <td><%= s.class%></td>
+              <td><%= s.faculty%></td>
+              <td><%= s.address%></td>
+              <td>
+                <form action="/edit/<%= s.id %>" method="post">
+                  <button class="edit">Edit</button>
+                </form>
+              </td>
+              <td>
+                <form
+                  onsubmit=" return confirmDelete()"
+                  method="post"
+                  action="/delete/<%= s.id %>?_method=Delete"
+                >
+                  <button class="delete">Delete</button>
+                </form>
+              </td>
+            </tr>
+
+            <% } %> <%} %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      function confirmDelete() {
+        return confirm("Do you want to delete the data? ");
+      }
+    </script>
+  </body>
+</html>

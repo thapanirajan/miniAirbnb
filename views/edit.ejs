@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="/form.css" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Edit data</h1>
+      <form action="/edit/<%= student.id %>?_method=PATCH" method="post">
+        <div>
+          Name:
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value="<%= student.name %>"
+          />
+        </div>
+        <div>
+          class:
+          <input
+            type="number"
+            name="class"
+            placeholder="class"
+            value="<%= student.class %>"
+          />
+        </div>
+        <div>
+          Faculty:
+          <input
+            type="text"
+            name="faculty"
+            placeholder="faculty"
+            value="<%= student.faculty %>"
+          />
+        </div>
+        <div>
+          Address:
+          <input
+            type="text"
+            name="address"
+            placeholder="address"
+            value="<%= student.address %>"
+          />
+        </div>
+        <div>
+          <button>Submit</button>
+        </div>
+      </form>
+      <a href="/" class="a">Back</a>
+    </div>
+  </body>
+</html>
